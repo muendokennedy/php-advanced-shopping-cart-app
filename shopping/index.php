@@ -1,3 +1,17 @@
+<?php 
+
+require_once __DIR__ . "/CreateDb.php";
+require_once __DIR__ . "/php/component.php";
+
+$database = new CreateDb('Productdb', 'Producttb');
+
+if(isset($_POST['add'])){
+  echo '<pre>';
+  var_dump((int)$_POST['product_id']);
+  echo '</pre>';
+}
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -13,94 +27,16 @@
 
 <body>
   <div class="card-wrapper">
-    <div class="card">
-      <form action="index.php" method="post">
-        <div class="img-box"><img src="upload/product1.png"></div>
-        <div class="info-part">
-          <div class="product-name">Apple MacBook Pro</div>
-          <div class="rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="far fa-star"></i>
-          </div>
-          <div class="product-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci odio, quaerat.
-          </div>
-          <div class="product-price"><small><s>$590</s></small><span> $550 </span></div>
-          <div class="addtocart-btn">
-            <button type="submit" name="add">Add to cart <i class="fas fa-shopping-cart"></i></button>
-            <input type="hidden" name="product_id" value='1'>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="card">
-      <form action="index.php" method="post">
-        <div class="img-box"><img src="upload/product2.png"></div>
-        <div class="info-part">
-          <div class="product-name">Sony E7 Headphones</div>
-          <div class="rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="far fa-star"></i>
-          </div>
-          <div class="product-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci odio, quaerat.
-          </div>
-          <div class="product-price"><small><s>$590</s></small><span> $550 </span></div>
-          <div class="addtocart-btn">
-            <button type="submit" name="add">Add to cart <i class="fas fa-shopping-cart"></i></button>
-            <input type="hidden" name="product_id" value='1'>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="card">
-      <form action="index.php" method="post">
-        <div class="img-box"><img src="upload/product3.png"></div>
-        <div class="info-part">
-          <div class="product-name">Sony Xperia Z4</div>
-          <div class="rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="far fa-star"></i>
-          </div>
-          <div class="product-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci odio, quaerat.
-          </div>
-          <div class="product-price"><small><s>$590</s></small><span> $550 </span></div>
-          <div class="addtocart-btn">
-            <button type="submit" name="add">Add to cart <i class="fas fa-shopping-cart"></i></button>
-            <input type="hidden" name="product_id" value='1'>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="card">
-      <form action="index.php" method="post">
-        <div class="img-box"><img src="upload/product4.png"></div>
-        <div class="info-part">
-          <div class="product-name">Samsung Galaxy</div>
-          <div class="rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="far fa-star"></i>
-          </div>
-          <div class="product-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci odio, quaerat.
-          </div>
-          <div class="product-price"><small><s>$590</s></small><span> $550 </span></div>
-          <div class="addtocart-btn">
-            <button type="submit" name="add">Add to cart <i class="fas fa-shopping-cart"></i></button>
-            <input type="hidden" name="product_id" value='1'>
-          </div>
-        </div>
-      </form>
-    </div>
+    <?php 
+
+    $result = $database->getData();
+
+    while ($row = $result->fetch_assoc()) {
+      component($row['product_name'], $row['product_price'], $row['product_image'], $row['id']);
+    }
+    
+    ?>
+
   </div>
 </body>
 
