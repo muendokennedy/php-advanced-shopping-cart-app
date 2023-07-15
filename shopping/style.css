@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card {
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 2px rgba(24, 22, 22, 0.4);
+    height: auto;
+}
+
+.card .img-box {
+    width: 100%;
+    height: 250px;
+    background: lightblue;
+
+}
+
+.card .img-box img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 0 0;
+    background-size: cover;
+    transform: scale(0.7);
+    background: radial-gradient(white 30%, lightblue 70%);
+
+}
+
+.fa-star {
+    color: yellowgreen;
+    padding: 3% 0;
+}
+
+.card .info-part {
+    padding: 20px 25px;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+}
+
+.product-name {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.rating {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.product-desc {
+    text-align: center;
+}
+
+.product-price {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.product-price span {
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.addtocart-btn {
+    text-align: center;
+}
+
+.addtocart-btn button {
+    padding: 10px 14px;
+    font-size: 17px;
+    outline: none;
+    border: none;
+    background: orange;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.navbar {
+    position: relative;
+    width: 100%;
+    background: rgb(83, 83, 122);
+    text-decoration: none;
+    display: flex;
+    padding: 25px 25px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.navbar .col-1 {
+    display: flex;
+    color: #fff;
+    align-items: center;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.navbar .col-1 i {
+    margin-right: 20px;
+    font-size: 24px;
+}
+
+.navbar .col-2 {
+    position: absolute;
+    right: 100px;
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar .col-2 i {
+    margin-right: 10px;
+}
+
+.navbar .col-2 span {
+    text-align: center;
+    padding: 0 0.9rem 0.1rem 0.9rem;
+    border-radius: 3rem;
+}
+
+.text-warning {
+    background: #fff;
+    color: orange;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.topic h4 {
+    margin-left: 30px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-bottom: 1px solid #000;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.col-num-1 {
+    margin-left: 30px;
+    width: 50%;
+    display: flex;
+}
+
+.col-num-1 .img-box img {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #000;
+}
+
+.product-info {
+    width: 100%;
+    margin-left: 20px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding-bottom: 20px;
+}
+
+.product-info h2 {
+    margin-left: 20px;
+}
+
+.product-info p {
+    margin-left: 20px;
+}
+
+.product-info button {
+    padding: 10px 12px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-left: 20px;
+    background: orange;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.product-info .remove {
+    background: red;
+    color: #fff;
+    font-weight: 500;
+}
+
+.cart-container {
+    position: relative;
+}
+
+.col-num-2 {
+    position: absolute;
+    left: 60%;
+    top: 50px;
+    width: 500px;
+    border: 1px solid #000;
+    height: 300px;
+}
+
+.col-num-2 h4 {
+    width: 400px;
+}
+
+.price-display {
+    margin-left: 30px;
+    position: relative;
+}
+
+.price-display h5 {
+    padding-top: 20px;
+}
+
+.price-display .delivery {
+    border-bottom: 1px solid #000;
+    padding-bottom: 20px;
+}
+
+.delivery span {
+    position: absolute;
+    right: 30px;
+    top: 50px;
+    font-weight: bold;
+    color: green;
+    font-size: 20px;
+}
+
+.price-display .payable {
+    font-size: 18px;
+    position: absolute;
+    top: 110px;
+}
+
+.payable span {
+    position: absolute;
+    right: -300px;
+    top: 20px;
+    font-weight: bold;
+}
+
+.payable-1 span {
+    position: absolute;
+    font-size: 18px;
+    right: 25px;
+    top: 8px;
+    font-weight: bold;
+}
