@@ -1,6 +1,7 @@
 <?php
 
-function component($productName, $productPrice, $productImg, $productId){
+function component($productName, $productPrice, $productImg, $productId)
+{
   $element = '
   <div class="card">
   <form action="index.php" method="post">
@@ -14,7 +15,7 @@ function component($productName, $productPrice, $productImg, $productId){
         <i class="fas fa-star"></i>
         <i class="far fa-star"></i>
       </div>
-      <div class="product-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci odio, quaerat.
+      <div class="product-desc">Lorem ipsum dolor, sit amet consectetur.
       </div>
       <div class="product-price"><small><s>$590</s></small><span> $' . $productPrice . '</span></div>
       <div class="addtocart-btn">
@@ -25,5 +26,27 @@ function component($productName, $productPrice, $productImg, $productId){
   </form>
 </div>';
 
-echo $element;
+  echo $element;
+}
+
+function cartElement($productImg, $productName, $productPrice)
+{
+  $element = '
+  <form action="cart.php" method="GET">
+  <div class="col-num-1">
+    <div class="img-box">
+      <img src="' . $productImg . '" alt="product">
+    </div>
+    <div class="product-info">
+      <h2>' . $productName . '</h2>
+      <p>Seller: Kennedy Munyao</p>
+      <h2>$' . $productPrice . '</h2>
+      <button type="submit">save for later</button>
+      <button type="submit" name="remove" class="remove">Remove</button>
+    </div>
+  </div>
+</form>';
+
+  echo $element;
+
 }
