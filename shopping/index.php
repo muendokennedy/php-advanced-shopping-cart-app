@@ -1,7 +1,8 @@
 <?php
 // start a session 
+session_start();
 
-require_once __DIR__ . "/CreateDb.php";
+require_once __DIR__ . "/php/CreateDb.php";
 require_once __DIR__ . "/php/component.php";
 
 $database = new CreateDb('Productdb', 'Producttb');
