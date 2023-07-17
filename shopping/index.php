@@ -1,16 +1,37 @@
-<?php 
+<?php
+// start a session 
 
 require_once __DIR__ . "/CreateDb.php";
 require_once __DIR__ . "/php/component.php";
 
 $database = new CreateDb('Productdb', 'Producttb');
 
-if(isset($_POST['add'])){
-  echo '<pre>';
-  var_dump((int)$_POST['product_id']);
-  echo '</pre>';
-}
+if (isset($_POST['add'])) {
+  // check if the cart session variable exists
+  if (isset($_SESSION['cart'])) {
 
+    $item_array_id = array_column($_SESSION['cart'], 'product_id');
+
+    // Display some message if the product is already in the cart
+
+    if (in_array($_POST['product_id'], $item_array_id)) {
+      $_SESSION['flash']['already'] = 'The product is already in the cart';
+    } else {
+      $cartProducts = count($_SESSION['cart']);
+      $item_array = [
+        'product_id' => $_POST['product_id']
+      ];
+      $_SESSION['cart'][$cartProducts] = $item_array;
+    }
+
+  } else {
+    $item_array = [
+      'product_id' => $_POST['product_id']
+    ];
+
+    $_SESSION['cart'][0] = $item_array;
+  }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,18 +47,49 @@ if(isset($_POST['add'])){
 </head>
 
 <body>
-  <div class="card-wrapper">
-    <?php 
+  <?php
 
+  require_once __DIR__ . "/php/header.php";
+
+  ?>
+  <?php
+
+  if (isset($_SESSION['flash']['already'])) {
+
+    echo '<div class="alert-box">' . $_SESSION['flash']['already'] . ' <button type="button">OK</button></div>';
+
+    unset($_SESSION['flash']['already']);
+  }
+
+  ?>
+  <div class="card-wrapper">
+    <?php
     $result = $database->getData();
 
     while ($row = $result->fetch_assoc()) {
       component($row['product_name'], $row['product_price'], $row['product_image'], $row['id']);
     }
-    
+
     ?>
 
   </div>
+  <script>
+    const alertBox = document.querySelector('.alert-box');
+    const alertTogglerButton = document.querySelector('.alert-box button');
+
+    // Ensure that there is no resubmission upon refreshing the current page url
+    window.onload = () => {
+      if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+      }
+
+    }
+    if (alertBox) {
+      alertTogglerButton.onclick = () => {
+        location.reload();
+      }
+    }
+  </script>
 </body>
 
 </html>
