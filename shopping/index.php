@@ -1,39 +1,14 @@
-<?php
-// start a session 
+<?php 
 
-session_start();
-
-require_once __DIR__ . "/php/CreateDb.php";
+require_once __DIR__ . "/CreateDb.php";
 require_once __DIR__ . "/php/component.php";
-
 
 $database = new CreateDb('Productdb', 'Producttb');
 
-if (isset($_POST['add'])) {
-  // check if the cart session variable exists
-  if (isset($_SESSION['cart'])) {
-
-    $item_array_id = array_column($_SESSION['cart'], 'product_id');
-
-    // Display some message if the product is already in the cart
-
-    if (in_array($_POST['product_id'], $item_array_id)) {
-      $_SESSION['flash']['already'] = 'The product is already in the cart';
-    } else {
-      $cartProducts = count($_SESSION['cart']);
-      $item_array = [
-        'product_id' => $_POST['product_id']
-      ];
-      $_SESSION['cart'][$cartProducts] = $item_array;
-    }
-
-  } else {
-    $item_array = [
-      'product_id' => $_POST['product_id']
-    ];
-
-    $_SESSION['cart'][0] = $item_array;
-  }
+if(isset($_POST['add'])){
+  echo '<pre>';
+  var_dump((int)$_POST['product_id']);
+  echo '</pre>';
 }
 
 ?>
@@ -51,20 +26,15 @@ if (isset($_POST['add'])) {
 </head>
 
 <body>
-  <?php
-
-  require_once __DIR__ . "/php/header.php";
-
-  ?>
   <div class="card-wrapper">
-    <?php
+    <?php 
 
     $result = $database->getData();
 
     while ($row = $result->fetch_assoc()) {
       component($row['product_name'], $row['product_price'], $row['product_image'], $row['id']);
     }
-
+    
     ?>
 
   </div>
