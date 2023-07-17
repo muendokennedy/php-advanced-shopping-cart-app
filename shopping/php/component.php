@@ -15,7 +15,7 @@ function component($productName, $productPrice, $productImg, $productId)
         <i class="fas fa-star"></i>
         <i class="far fa-star"></i>
       </div>
-      <div class="product-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci odio, quaerat.
+      <div class="product-desc">Lorem ipsum dolor, sit amet consectetur.
       </div>
       <div class="product-price"><small><s>$590</s></small><span> $' . $productPrice . '</span></div>
       <div class="addtocart-btn">
